@@ -35,6 +35,12 @@
     },
     "stars": {
       "type": "string"
+    },
+    "book": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
     }
   }
 }
