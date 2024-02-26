@@ -4,7 +4,8 @@
   "info": {
     "singularName": "userreview",
     "pluralName": "userreviews",
-    "displayName": "userreview"
+    "displayName": "userreview",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,6 +17,24 @@
     },
     "stars": {
       "type": "biginteger"
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::author.author",
+      "inversedBy": "userreviews"
+    },
+    "awards": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::award.award",
+      "inversedBy": "userreviews"
+    },
+    "books": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::book.book",
+      "inversedBy": "userreviews"
     }
   }
 }

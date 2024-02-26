@@ -49,6 +49,12 @@
     },
     "genre": {
       "type": "string"
+    },
+    "userreviews": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::userreview.userreview",
+      "mappedBy": "authors"
     }
   }
 }

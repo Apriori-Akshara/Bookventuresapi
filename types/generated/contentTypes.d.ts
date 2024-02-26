@@ -390,6 +390,11 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
     iskids: Attribute.Boolean;
     isIndian: Attribute.Boolean;
     genre: Attribute.String;
+    userreviews: Attribute.Relation<
+      'api::author.author',
+      'manyToMany',
+      'api::userreview.userreview'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -430,6 +435,11 @@ export interface ApiAwardAward extends Schema.CollectionType {
       'api::award.award',
       'manyToMany',
       'api::book.book'
+    >;
+    userreviews: Attribute.Relation<
+      'api::award.award',
+      'manyToMany',
+      'api::userreview.userreview'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -479,6 +489,11 @@ export interface ApiBookBook extends Schema.CollectionType {
       'manyToMany',
       'api::award.award'
     >;
+    userreviews: Attribute.Relation<
+      'api::book.book',
+      'manyToMany',
+      'api::userreview.userreview'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -495,6 +510,7 @@ export interface ApiUserreviewUserreview extends Schema.CollectionType {
     singularName: 'userreview';
     pluralName: 'userreviews';
     displayName: 'userreview';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -502,6 +518,21 @@ export interface ApiUserreviewUserreview extends Schema.CollectionType {
   attributes: {
     comment: Attribute.Text;
     stars: Attribute.BigInteger;
+    authors: Attribute.Relation<
+      'api::userreview.userreview',
+      'manyToMany',
+      'api::author.author'
+    >;
+    awards: Attribute.Relation<
+      'api::userreview.userreview',
+      'manyToMany',
+      'api::award.award'
+    >;
+    books: Attribute.Relation<
+      'api::userreview.userreview',
+      'manyToMany',
+      'api::book.book'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

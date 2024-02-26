@@ -55,6 +55,12 @@
       "relation": "manyToMany",
       "target": "api::award.award",
       "inversedBy": "books"
+    },
+    "userreviews": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::userreview.userreview",
+      "mappedBy": "books"
     }
   }
 }
