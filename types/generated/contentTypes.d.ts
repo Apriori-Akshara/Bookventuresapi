@@ -517,7 +517,6 @@ export interface ApiUserreviewUserreview extends Schema.CollectionType {
   };
   attributes: {
     comment: Attribute.Text;
-    stars: Attribute.BigInteger;
     authors: Attribute.Relation<
       'api::userreview.userreview',
       'manyToMany',
@@ -533,6 +532,7 @@ export interface ApiUserreviewUserreview extends Schema.CollectionType {
       'manyToMany',
       'api::book.book'
     >;
+    stars: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

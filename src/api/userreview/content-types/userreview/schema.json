@@ -15,9 +15,6 @@
     "comment": {
       "type": "text"
     },
-    "stars": {
-      "type": "biginteger"
-    },
     "authors": {
       "type": "relation",
       "relation": "manyToMany",
@@ -35,6 +32,9 @@
       "relation": "manyToMany",
       "target": "api::book.book",
       "inversedBy": "userreviews"
+    },
+    "stars": {
+      "type": "string"
     }
   }
 }
