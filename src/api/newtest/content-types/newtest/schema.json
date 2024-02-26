@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "newtests",
+  "info": {
+    "singularName": "newtest",
+    "pluralName": "newtests",
+    "displayName": "newtest"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "img": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
