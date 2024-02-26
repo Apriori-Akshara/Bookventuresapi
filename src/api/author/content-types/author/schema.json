@@ -46,6 +46,9 @@
     },
     "isIndian": {
       "type": "boolean"
+    },
+    "genre": {
+      "type": "string"
     }
   }
 }

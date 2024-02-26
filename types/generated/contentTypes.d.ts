@@ -389,6 +389,7 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
     isfiction: Attribute.Boolean;
     iskids: Attribute.Boolean;
     isIndian: Attribute.Boolean;
+    genre: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -484,6 +485,37 @@ export interface ApiBookBook extends Schema.CollectionType {
     createdBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUserreviewUserreview extends Schema.CollectionType {
+  collectionName: 'userreviews';
+  info: {
+    singularName: 'userreview';
+    pluralName: 'userreviews';
+    displayName: 'userreview';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    comment: Attribute.Text;
+    stars: Attribute.BigInteger;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::userreview.userreview',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::userreview.userreview',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -923,6 +955,7 @@ declare module '@strapi/types' {
       'api::author.author': ApiAuthorAuthor;
       'api::award.award': ApiAwardAward;
       'api::book.book': ApiBookBook;
+      'api::userreview.userreview': ApiUserreviewUserreview;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

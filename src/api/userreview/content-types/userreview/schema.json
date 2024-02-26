@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "userreviews",
+  "info": {
+    "singularName": "userreview",
+    "pluralName": "userreviews",
+    "displayName": "userreview"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "comment": {
+      "type": "text"
+    },
+    "stars": {
+      "type": "biginteger"
+    }
+  }
+}
