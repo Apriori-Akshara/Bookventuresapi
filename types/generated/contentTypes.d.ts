@@ -362,6 +362,197 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiAuthorAuthor extends Schema.CollectionType {
+  collectionName: 'authors';
+  info: {
+    singularName: 'author';
+    pluralName: 'authors';
+    displayName: 'author';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    img: Attribute.Media;
+    awards: Attribute.Relation<
+      'api::author.author',
+      'manyToMany',
+      'api::award.award'
+    >;
+    books: Attribute.Relation<
+      'api::author.author',
+      'manyToMany',
+      'api::book.book'
+    >;
+    isfiction: Attribute.Boolean;
+    iskids: Attribute.Boolean;
+    isIndian: Attribute.Boolean;
+    genre: Attribute.String;
+    userreviews: Attribute.Relation<
+      'api::author.author',
+      'manyToMany',
+      'api::userreview.userreview'
+    >;
+    isNobleWinner: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::author.author',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::author.author',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiAwardAward extends Schema.CollectionType {
+  collectionName: 'awards';
+  info: {
+    singularName: 'award';
+    pluralName: 'awards';
+    displayName: 'award';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    img: Attribute.Media;
+    authors: Attribute.Relation<
+      'api::award.award',
+      'manyToMany',
+      'api::author.author'
+    >;
+    books: Attribute.Relation<
+      'api::award.award',
+      'manyToMany',
+      'api::book.book'
+    >;
+    userreviews: Attribute.Relation<
+      'api::award.award',
+      'manyToMany',
+      'api::userreview.userreview'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::award.award',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::award.award',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiBookBook extends Schema.CollectionType {
+  collectionName: 'books';
+  info: {
+    singularName: 'book';
+    pluralName: 'books';
+    displayName: 'book';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    img: Attribute.Media;
+    summary: Attribute.Text;
+    ogname: Attribute.String;
+    isbn: Attribute.String;
+    lang: Attribute.String;
+    pubdate: Attribute.String;
+    authors: Attribute.Relation<
+      'api::book.book',
+      'manyToMany',
+      'api::author.author'
+    >;
+    awards: Attribute.Relation<
+      'api::book.book',
+      'manyToMany',
+      'api::award.award'
+    >;
+    userreviews: Attribute.Relation<
+      'api::book.book',
+      'manyToMany',
+      'api::userreview.userreview'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUserreviewUserreview extends Schema.CollectionType {
+  collectionName: 'userreviews';
+  info: {
+    singularName: 'userreview';
+    pluralName: 'userreviews';
+    displayName: 'userreview';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    comment: Attribute.Text;
+    authors: Attribute.Relation<
+      'api::userreview.userreview',
+      'manyToMany',
+      'api::author.author'
+    >;
+    awards: Attribute.Relation<
+      'api::userreview.userreview',
+      'manyToMany',
+      'api::award.award'
+    >;
+    books: Attribute.Relation<
+      'api::userreview.userreview',
+      'manyToMany',
+      'api::book.book'
+    >;
+    stars: Attribute.String;
+    book: Attribute.String;
+    name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::userreview.userreview',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::userreview.userreview',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -784,197 +975,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiAuthorAuthor extends Schema.CollectionType {
-  collectionName: 'authors';
-  info: {
-    singularName: 'author';
-    pluralName: 'authors';
-    displayName: 'author';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    img: Attribute.Media;
-    awards: Attribute.Relation<
-      'api::author.author',
-      'manyToMany',
-      'api::award.award'
-    >;
-    books: Attribute.Relation<
-      'api::author.author',
-      'manyToMany',
-      'api::book.book'
-    >;
-    isfiction: Attribute.Boolean;
-    iskids: Attribute.Boolean;
-    isIndian: Attribute.Boolean;
-    genre: Attribute.String;
-    userreviews: Attribute.Relation<
-      'api::author.author',
-      'manyToMany',
-      'api::userreview.userreview'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::author.author',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::author.author',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiAwardAward extends Schema.CollectionType {
-  collectionName: 'awards';
-  info: {
-    singularName: 'award';
-    pluralName: 'awards';
-    displayName: 'award';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    img: Attribute.Media;
-    authors: Attribute.Relation<
-      'api::award.award',
-      'manyToMany',
-      'api::author.author'
-    >;
-    books: Attribute.Relation<
-      'api::award.award',
-      'manyToMany',
-      'api::book.book'
-    >;
-    userreviews: Attribute.Relation<
-      'api::award.award',
-      'manyToMany',
-      'api::userreview.userreview'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::award.award',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::award.award',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiBookBook extends Schema.CollectionType {
-  collectionName: 'books';
-  info: {
-    singularName: 'book';
-    pluralName: 'books';
-    displayName: 'book';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    img: Attribute.Media;
-    summary: Attribute.Text;
-    ogname: Attribute.String;
-    isbn: Attribute.String;
-    lang: Attribute.String;
-    pubdate: Attribute.String;
-    authors: Attribute.Relation<
-      'api::book.book',
-      'manyToMany',
-      'api::author.author'
-    >;
-    genre: Attribute.String;
-    awards: Attribute.Relation<
-      'api::book.book',
-      'manyToMany',
-      'api::award.award'
-    >;
-    userreviews: Attribute.Relation<
-      'api::book.book',
-      'manyToMany',
-      'api::userreview.userreview'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiUserreviewUserreview extends Schema.CollectionType {
-  collectionName: 'userreviews';
-  info: {
-    singularName: 'userreview';
-    pluralName: 'userreviews';
-    displayName: 'userreview';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    comment: Attribute.Text;
-    authors: Attribute.Relation<
-      'api::userreview.userreview',
-      'manyToMany',
-      'api::author.author'
-    >;
-    awards: Attribute.Relation<
-      'api::userreview.userreview',
-      'manyToMany',
-      'api::award.award'
-    >;
-    books: Attribute.Relation<
-      'api::userreview.userreview',
-      'manyToMany',
-      'api::book.book'
-    >;
-    stars: Attribute.String;
-    book: Attribute.String;
-    name: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::userreview.userreview',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::userreview.userreview',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -985,6 +985,10 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::author.author': ApiAuthorAuthor;
+      'api::award.award': ApiAwardAward;
+      'api::book.book': ApiBookBook;
+      'api::userreview.userreview': ApiUserreviewUserreview;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -993,10 +997,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::author.author': ApiAuthorAuthor;
-      'api::award.award': ApiAwardAward;
-      'api::book.book': ApiBookBook;
-      'api::userreview.userreview': ApiUserreviewUserreview;
     }
   }
 }

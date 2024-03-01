@@ -55,6 +55,9 @@
       "relation": "manyToMany",
       "target": "api::userreview.userreview",
       "mappedBy": "authors"
+    },
+    "isNobleWinner": {
+      "type": "boolean"
     }
   }
 }

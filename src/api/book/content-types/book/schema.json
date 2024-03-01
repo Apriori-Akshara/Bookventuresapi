@@ -47,9 +47,6 @@
       "target": "api::author.author",
       "mappedBy": "books"
     },
-    "genre": {
-      "type": "string"
-    },
     "awards": {
       "type": "relation",
       "relation": "manyToMany",
