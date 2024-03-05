@@ -33,14 +33,14 @@
       "target": "api::book.book",
       "inversedBy": "userreviews"
     },
-    "stars": {
-      "type": "string"
-    },
     "book": {
       "type": "string"
     },
     "name": {
       "type": "string"
+    },
+    "stars": {
+      "type": "biginteger"
     }
   }
 }
