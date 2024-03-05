@@ -27,20 +27,17 @@
       "target": "api::award.award",
       "inversedBy": "userreviews"
     },
-    "books": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::book.book",
-      "inversedBy": "userreviews"
-    },
-    "book": {
-      "type": "string"
-    },
     "name": {
       "type": "string"
     },
     "stars": {
       "type": "biginteger"
+    },
+    "book": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::book.book",
+      "inversedBy": "userreviews"
     }
   }
 }

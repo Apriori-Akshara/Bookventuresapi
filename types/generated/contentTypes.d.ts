@@ -491,7 +491,7 @@ export interface ApiBookBook extends Schema.CollectionType {
     >;
     userreviews: Attribute.Relation<
       'api::book.book',
-      'manyToMany',
+      'oneToMany',
       'api::userreview.userreview'
     >;
     createdAt: Attribute.DateTime;
@@ -527,14 +527,13 @@ export interface ApiUserreviewUserreview extends Schema.CollectionType {
       'manyToMany',
       'api::award.award'
     >;
-    books: Attribute.Relation<
-      'api::userreview.userreview',
-      'manyToMany',
-      'api::book.book'
-    >;
-    book: Attribute.String;
     name: Attribute.String;
     stars: Attribute.BigInteger;
+    book: Attribute.Relation<
+      'api::userreview.userreview',
+      'manyToOne',
+      'api::book.book'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -55,9 +55,9 @@
     },
     "userreviews": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::userreview.userreview",
-      "mappedBy": "books"
+      "mappedBy": "book"
     }
   }
 }
